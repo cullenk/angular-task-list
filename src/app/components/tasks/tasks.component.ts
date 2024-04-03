@@ -1,0 +1,42 @@
+import { Component } from '@angular/core';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { Task } from '../../Task';
+import { TASKS } from '../../mock-tasks';
+import { TaskService } from '../../services/task.service';
+import { TaskItemComponent } from '../task-item/task-item.component';
+
+
+@Component({
+  selector: 'app-tasks',
+  standalone: true,
+  imports: [ TaskItemComponent, CommonModule ],
+  templateUrl: './tasks.component.html',
+  styleUrl: './tasks.component.css'
+})
+export class TasksComponent {
+
+constructor(private taskService: TaskService){
+
+}
+
+ngOnInit(): void {
+  this.taskService.getTasks().subscribe((tasks) => this.tasks = tasks)
+}
+
+tasks: Task[] = [];  
+
+deleteTask(task: Task){
+  this.taskService
+  .deleteTask(task)
+  .subscribe(
+    () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
+  );
+}
+
+toggleReminder(task: Task){
+  task.reminder = !task.reminder;
+  console.log(task.reminder)
+}
+
+}
