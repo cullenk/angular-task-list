@@ -1,7 +1,7 @@
 <div 
     class="task"
-    [ngClass]="{'reminder': task.reminder}"
-    (dbclick)="onToggle(task)"
+    [ngClass]="{reminder: task.reminder}"
+    (dblclick)="onToggle(task)"
     >
     <h3>{{task.text}} 
         <fa-icon 

@@ -3,6 +3,7 @@ import { Task } from '../../Task';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
+
 //Needed to handle [ngClass] and [ngStyle]
 import { CommonModule } from '@angular/common';
 
